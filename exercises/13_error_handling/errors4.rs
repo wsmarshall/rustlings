@@ -16,11 +16,11 @@ impl PositiveNonzeroInteger {
     fn new(value: i64) -> Result<PositiveNonzeroInteger, CreationError> {
         // Hmm... Why is this always returning an Ok value?
         if value > 0 {
-            return Ok(PositiveNonzeroInteger(value as u64));
+            Ok(PositiveNonzeroInteger(value as u64))
         } else if value < 0 {
-            return Err(CreationError::Negative);
+            Err(CreationError::Negative)
         } else {
-            return Err(CreationError::Zero);
+            Err(CreationError::Zero)
         }
     }
 }
