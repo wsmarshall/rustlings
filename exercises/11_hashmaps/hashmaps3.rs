@@ -5,9 +5,9 @@
 // Example: England,France,4,2 (England scored 4 goals, France 2).
 //
 // You have to build a scores table containing the name of the team, the total
-// number of goals the team scored, and the total number of goals the team 
-// conceded. One approach to build the scores table is to use a Hashmap. 
-// The solution is partially written to use a Hashmap, 
+// number of goals the team scored, and the total number of goals the team
+// conceded. One approach to build the scores table is to use a Hashmap.
+// The solution is partially written to use a Hashmap,
 // complete it to pass the test.
 //
 // Make me pass the tests!
@@ -15,12 +15,11 @@
 // Execute `rustlings hint hashmaps3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
 use std::collections::HashMap;
 
 // A structure to store the goal details of a team.
 struct Team {
+    name: String,
     goals_scored: u8,
     goals_conceded: u8,
 }
@@ -40,6 +39,36 @@ fn build_scores_table(results: String) -> HashMap<String, Team> {
         // will be the number of goals conceded by team_2, and similarly
         // goals scored by team_2 will be the number of goals conceded by
         // team_1.
+
+        if !scores.contains_key(&team_1_name) {
+            scores.insert(
+                team_1_name.clone(),
+                Team {
+                    name: team_1_name.clone(),
+                    goals_scored: team_1_score,
+                    goals_conceded: team_2_score,
+                },
+            );
+        } else {
+            //mutably change the entries
+            scores.get_mut(&team_1_name).unwrap().goals_scored += team_1_score;
+            scores.get_mut(&team_1_name).unwrap().goals_conceded += team_2_score;
+        }
+
+        if !scores.contains_key(&team_2_name) {
+            scores.insert(
+                team_2_name.clone(),
+                Team {
+                    name: team_2_name.clone(),
+                    goals_scored: team_2_score,
+                    goals_conceded: team_1_score,
+                },
+            );
+        } else {
+            //mutably change the entries
+            scores.get_mut(&team_2_name).unwrap().goals_scored += team_2_score;
+            scores.get_mut(&team_2_name).unwrap().goals_conceded += team_1_score;
+        }
     }
     scores
 }
