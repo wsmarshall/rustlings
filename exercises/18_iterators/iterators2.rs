@@ -17,7 +17,9 @@ pub fn capitalize_first(input: &str) -> String {
     match c.next() {
         None => String::new(),
         Some(first) => {
-            output.replace(first, first.to_uppercase());
+            let first_char = output.chars().nth(0).unwrap().to_ascii_uppercase();
+            output.replace_range(0..1, &first_char.to_string());
+            println!("output: {}", output);
             output.to_string()
         }
     }
@@ -31,9 +33,9 @@ pub fn capitalize_words_vector(words: &[&str]) -> Vec<String> {
     let mut check = words.into_iter();
     let mut output = Vec::<String>::new();
     while let Some(w) = check.next() {
-        print!("here1");
-        let mut x = w.clone();
-        output.push(capitalize_first(x));
+        // print!("here1");
+        // let mut x = w.clone();
+        // output.push(capitalize_first(x));
     }
     output
 }
