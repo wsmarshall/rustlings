@@ -61,7 +61,7 @@ mod tests {
     fn test_empty() {
         assert_eq!(capitalize_first(""), "");
     }
-    /*
+
     #[test]
     fn test_iterate_string_vec() {
         let words = vec!["hello", "world"];
@@ -73,5 +73,4 @@ mod tests {
         let words = vec!["hello", " ", "world"];
         assert_eq!(capitalize_words_string(&words), "Hello World");
     }
-    */
 }
