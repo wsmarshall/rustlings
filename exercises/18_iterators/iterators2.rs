@@ -33,9 +33,9 @@ pub fn capitalize_words_vector(words: &[&str]) -> Vec<String> {
     let mut check = words.into_iter();
     let mut output = Vec::<String>::new();
     while let Some(w) = check.next() {
-        // print!("here1");
-        // let mut x = w.clone();
-        // output.push(capitalize_first(x));
+        println!("here1");
+        let mut x = w.clone();
+        output.push(capitalize_first(x));
     }
     output
 }
